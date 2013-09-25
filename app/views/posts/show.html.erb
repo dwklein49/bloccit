@@ -11,10 +11,14 @@
       <%= image_tag(@post.image) if @post.image? %>
       <%= markdown @post.body %>
     </p>
+    <p> <%= render comment.body %> </p>
   </div>
   <div class="span4">
     <% if can? :edit, @post %>
       <%= link_to "Edit", edit_topic_post_path(@topic,@post), class: 'btn btn-large btn-block' %>
+    <% end %>
+    <% if can? :add, @comment %>
+      <%= link_to "Comment", add_comment_post_path(@post, @comment), class: 'btn btn-large btn-block' %>
     <% end %>
   </div>
 </div>
